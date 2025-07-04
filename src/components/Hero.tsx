@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronDown, Download, Mail } from 'lucide-react';
 import heroImage from '@/assets/hero-bg.jpg';
+import profileImage from '@/assets/james-profile.jpg';
 
 const Hero = () => {
   const [text, setText] = useState('');
@@ -57,12 +58,23 @@ const Hero = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
+      {/* Profile Picture */}
+      <div className="absolute top-8 right-8 z-20">
+        <div className="group cursor-pointer">
+          <img
+            src={profileImage}
+            alt="James Gitau"
+            className="w-20 h-20 rounded-full border-4 border-primary/20 object-cover transition-all duration-500 group-hover:scale-[3] group-hover:z-50 group-hover:shadow-intense group-click:scale-[3] group-click:z-50"
+          />
+        </div>
+      </div>
+
       {/* Hero Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="fade-in">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             <span className="block text-foreground mb-2">Hello, I'm</span>
-            <span className="text-gradient">Alex Developer</span>
+            <span className="text-gradient">James Gitau</span>
           </h1>
           
           <div className="text-2xl md:text-3xl text-muted-foreground mb-8 h-12">
