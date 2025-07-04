@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ChevronDown, Download, Mail } from 'lucide-react';
-import heroImage from '../assets/hero-bg.jpg';
+import heroImage from '@/assets/hero-bg.jpg';
 
 const Hero = () => {
   const [text, setText] = useState('');
