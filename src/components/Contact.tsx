@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { sendEmail } from "@/lib/sendEmail";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -25,19 +26,13 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // This is a placeholder for Flask backend integration
-      // Replace with actual endpoint: fetch('/api/contact', { method: 'POST', body: JSON.stringify(formData) })
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // For now, just show success message
+      await sendEmail(formData);
+
       toast({
-        title: "Message Sent Successfully!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
+        title: "✅ Message Sent!",
+        description: "Thanks for reaching out — I’ll reply soon.",
       });
 
-      // Reset form
       setFormData({
         name: '',
         email: '',
@@ -45,9 +40,10 @@ const Contact = () => {
         message: ''
       });
     } catch (error) {
+      console.error("Email send failed:", error);
       toast({
-        title: "Error Sending Message",
-        description: "Something went wrong. Please try again later.",
+        title: "❌ Error",
+        description: "Failed to send your message. Try again.",
         variant: "destructive"
       });
     } finally {
@@ -59,19 +55,19 @@ const Contact = () => {
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email",
-      value: "contact@example.com",
-      link: "mailto:contact@example.com"
+      value: "youremail@example.com",
+      link: "mailto:youremail@example.com"
     },
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Phone",
-      value: "+1 (555) 123-4567",
-      link: "tel:+15551234567"
+      value: "+254 712 345 678",
+      link: "tel:+254712345678"
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Location",
-      value: "San Francisco, CA",
+      value: "Nairobi, Kenya",
       link: "#"
     }
   ];
@@ -80,7 +76,7 @@ const Contact = () => {
     {
       icon: <Github className="w-6 h-6" />,
       name: "GitHub",
-      url: "https://github.com/yourusername",
+      url: "https://github.com/OC11444",
       color: "hover:text-gray-400"
     },
     {
@@ -103,23 +99,19 @@ const Contact = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6">Get In Touch</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Ready to start your next project? Let's discuss how we can work together to bring your ideas to life.
+            Ready to start your next project? Let’s talk about how we can bring it to life.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold mb-6">Let's Connect</h3>
+              <h3 className="text-2xl font-bold mb-6">Let’s Connect</h3>
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                I'm always interested in new opportunities, whether it's a freelance project, 
-                full-time position, or just a chat about technology. Feel free to reach out 
-                through any of the channels below.
+                I’m available for freelance work, full-time roles, or collaboration on exciting tech projects.
               </p>
             </div>
 
-            {/* Contact Methods */}
             <div className="space-y-4">
               {contactInfo.map((info, index) => (
                 <a
@@ -138,7 +130,6 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Social Links */}
             <div className="pt-6">
               <h4 className="font-semibold mb-4">Follow Me</h4>
               <div className="flex gap-4">
@@ -157,30 +148,26 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Availability Status */}
             <div className="card-glass">
               <div className="flex items-center gap-3">
                 <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
                 <div>
                   <div className="font-medium">Available for Work</div>
                   <div className="text-sm text-muted-foreground">
-                    Currently accepting new projects and opportunities
+                    Let’s build something great together.
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Contact Form */}
           <div className="card-glow">
             <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
-            
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
-                    Name *
-                  </label>
+                  <label htmlFor="name" className="block text-sm font-medium mb-2">Name *</label>
                   <input
                     type="text"
                     id="name"
@@ -188,14 +175,12 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary"
                     placeholder="Your name"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Email *
-                  </label>
+                  <label htmlFor="email" className="block text-sm font-medium mb-2">Email *</label>
                   <input
                     type="email"
                     id="email"
@@ -203,16 +188,14 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary"
                     placeholder="your.email@example.com"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                  Subject *
-                </label>
+                <label htmlFor="subject" className="block text-sm font-medium mb-2">Subject *</label>
                 <input
                   type="text"
                   id="subject"
@@ -220,15 +203,13 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary"
                   placeholder="Project inquiry, collaboration, etc."
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Message *
-                </label>
+                <label htmlFor="message" className="block text-sm font-medium mb-2">Message *</label>
                 <textarea
                   id="message"
                   name="message"
@@ -236,7 +217,7 @@ const Contact = () => {
                   onChange={handleInputChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-none"
+                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary resize-none"
                   placeholder="Tell me about your project or what you'd like to discuss..."
                 />
               </div>
