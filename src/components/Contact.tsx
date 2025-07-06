@@ -50,48 +50,52 @@ const Contact = () => {
       setIsSubmitting(false);
     }
   };
-
+  
   const contactInfo = [
-    {
-      icon: <Mail className="w-6 h-6" />,
-      title: "Email",
-      value: "youremail@example.com",
-      link: "mailto:youremail@example.com"
-    },
-    {
-      icon: <Phone className="w-6 h-6" />,
-      title: "Phone",
-      value: "+254 712 345 678",
-      link: "tel:+254712345678"
-    },
-    {
-      icon: <MapPin className="w-6 h-6" />,
-      title: "Location",
-      value: "Nairobi, Kenya",
-      link: "#"
-    }
-  ];
+  {
+    icon: <Mail className="w-6 h-6" />,
+    title: "Email",
+    value: "gitaujames2005@gmail.com",
+    link: "mailto:gitaujames2005@gmail.com"
+  },
+  {
+    icon: <Phone className="w-6 h-6" />,
+    title: "Phone",
+    value: "+254 700 000 000",
+    link: "tel:+254700000000"
+  },
+  {
+    icon: <MapPin className="w-6 h-6" />,
+    title: "Location",
+    value: "Nairobi, Kenya",
+    link: "#"
+  }
+];
+
+
+  
 
   const socialLinks = [
-    {
-      icon: <Github className="w-6 h-6" />,
-      name: "GitHub",
-      url: "https://github.com/OC11444",
-      color: "hover:text-gray-400"
-    },
-    {
-      icon: <Linkedin className="w-6 h-6" />,
-      name: "LinkedIn",
-      url: "https://linkedin.com/in/yourusername",
-      color: "hover:text-blue-400"
-    },
-    {
-      icon: <Twitter className="w-6 h-6" />,
-      name: "Twitter",
-      url: "https://twitter.com/yourusername",
-      color: "hover:text-sky-400"
-    }
-  ];
+  {
+    icon: <Github className="w-6 h-6" />,
+    name: "GitHub",
+    url: "https://github.com/OC11444",
+    color: "hover:text-gray-400"
+  },
+  {
+    icon: <Linkedin className="w-6 h-6" />,
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/james-gitau-7b536a200",
+    color: "hover:text-blue-400"
+  },
+  {
+    icon: <Twitter className="w-6 h-6" />,
+    name: "Twitter",
+    url: "https://x.com/Jamesgi50549112",
+    color: "hover:text-sky-400"
+  }
+];
+
 
   return (
     <section id="contact" className="py-20 bg-background">
