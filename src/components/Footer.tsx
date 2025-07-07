@@ -91,9 +91,9 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4">Get In Touch</h3>
             <div className="space-y-2 text-muted-foreground">
-              <p>San Francisco, CA</p>
+              <p>KENYA,NAIROBI</p>
               <p>contact@example.com</p>
-              <p>+1 (555) 123-4567</p>
+              <p>+254 700-000-000</p>
             </div>
             <div className="mt-4">
               <div className="flex items-center gap-2 text-sm">
