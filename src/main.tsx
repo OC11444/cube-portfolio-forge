@@ -4,7 +4,7 @@ import App from './App.tsx';
 import './index.css';
 
 createRoot(document.getElementById("root")!).render(
-  <BrowserRouter basename="/cube-portfolio-forge">
+  <BrowserRouter basename="/JAMES-GITAU-PORTFOLIO/">
     <App />
   </BrowserRouter>
 );
